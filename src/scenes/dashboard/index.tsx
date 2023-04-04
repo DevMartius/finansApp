@@ -55,13 +55,19 @@ const Dashboard = (props: Props) => {
 
   return (
     <Box color={palette.grey[300]} width="100%" height="100%" display="grid" gap="1.5rem"
-      sx={{
-        gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",
-        gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
-        gridTemplateAreas: gridTemplateLargeScreens,
-      }}
+      sx={
+        isAboveMediumScreen ? {
+          gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",
+          gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
+          gridTemplateAreas: gridTemplateLargeScreens,    
+        } : {
+          gridAutoColumns: "1fr",
+          gridAutoRows: "80px",
+          gridTemplateAreas: gridTemplateSmallScreens
+      }
+    }
     >
-      <Box bgcolor="#FFF"  gridArea="a"></Box>
+      <Box bgcolor="#FFF" gridArea="a"></Box>
       <Box bgcolor="#FFF" gridArea="b"></Box>
       <Box bgcolor="#FFF" gridArea="c"></Box>
       <Box bgcolor="#FFF" gridArea="d"></Box>
